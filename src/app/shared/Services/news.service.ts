@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
 
-import { catchError, pluck } from 'rxjs/operators';
+import { catchError, pluck, take } from 'rxjs/operators';
 import { Articles } from '../interface/news.interface';
 
 @Injectable({
@@ -20,6 +20,7 @@ export class NewsService {
     return this.http
       .get<{ data: Articles[] }>(`${this.apiUrl}${mediaName}`)
       .pipe(
+        take(1),
         pluck('data'),
         catchError((err) => {
           console.log(err);

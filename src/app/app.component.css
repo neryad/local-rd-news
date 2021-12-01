@@ -40,6 +40,31 @@
   border-bottom: 0.5px solid white;
 }
 
+.refresh-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.3rem;
+  box-shadow: 1.7px 1.4px 3.6px rgba(0, 0, 0, 0.035),
+    4.6px 3.9px 10px rgba(0, 0, 0, 0.05),
+    11.2px 9.3px 24.1px rgba(0, 0, 0, 0.065), 37px 31px 80px rgba(0, 0, 0, 0.1);
+  color: white;
+  margin: 1em;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  transition: 0.3s all;
+  z-index: 3;
+}
+
+.refresh-btn:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.refresh-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
 .loadingDiv {
   background: white;
   width: 20rem;
