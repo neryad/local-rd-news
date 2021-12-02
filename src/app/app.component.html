@@ -1,5 +1,54 @@
 <div class="container">
-  <div class="sidebar">
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="" class="refresh-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="refresh-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+              />
+            </svg>
+            Refresh
+          </a>
+        </div>
+        <div class="titleNews">
+          <h4>{{ selectedDiary }}</h4>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a (click)="setSelectedDiary('listin')">Listin Diario</a></li>
+            <li>
+              <a (click)="setSelectedDiary('diarioLibre')">Diario Libre</a>
+            </li>
+
+            <li><a (click)="setSelectedDiary('nacional')">El Nacional</a></li>
+
+            <li>
+              <a (click)="setSelectedDiary('nuevoDiario')">Nuevo Diario</a>
+            </li>
+
+            <li>
+              <a (click)="setSelectedDiary('remolacha')">Remolacha.net</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <div class="sidebar">
     <ul>
       <li (click)="setSelectedDiary('listin')">Listin Diario</li>
       <li (click)="setSelectedDiary('diarioLibre')">Diario Libre</li>
@@ -7,8 +56,8 @@
       <li (click)="setSelectedDiary('nuevoDiario')">Nuevo Diario</li>
       <li (click)="setSelectedDiary('remolacha')">Remolacha.net</li>
     </ul>
-  </div>
-  <div>
+  </div> -->
+  <!-- <div>
     <a class="refresh-btn" (click)="refreshData()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -26,11 +75,11 @@
       </svg>
       Refresh
     </a>
-  </div>
+  </div> -->
 
   <div class="content" id="main">
-    <article>
-      <ng-container *ngIf="articlesVm$ | async as articles">
+    <article class="article">
+      <ng-container *ngIf="articles">
         <app-news-card
           [articles]="articles"
           [selectedDiary]="selectedDiary"
