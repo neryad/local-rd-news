@@ -20,7 +20,15 @@ type AvailableDiaries =
 export class AppComponent implements AfterViewInit {
   title = 'local-rd-news';
   selectedDiary = 'listin';
-
+  isLoading = true;
+  hasData = false;
+  newsMenues = [
+    { name: 'Listin', value: 'listin' },
+    { name: 'Diario Libre', value: 'diarioLibre' },
+    { name: 'El Nacional', value: 'nacional' },
+    { name: 'Nuevo Diario', value: 'nuevoDiario' },
+    { name: 'Remolacha', value: 'remolacha' },
+  ];
   articles!: { [key: string]: Articles[] };
 
   // Creamos un View Model con el observable
@@ -37,8 +45,17 @@ export class AppComponent implements AfterViewInit {
       nacional,
       nuevoDiario,
       remolacha,
-    })), // insertamos los articulos...
-    tap((data) => (this.articles = data))
+    })),
+    tap((data) => {
+      this.isLoading = true;
+      this.articles = data;
+      this.isLoading = false;
+      if (!this.articles) {
+        this.hasData = true;
+        this.isLoading = false;
+      }
+    }) // insertamos los articulos...
+    // tap((data) => (this.articles = data))
   );
 
   constructor(private newsService: NewsService, private el: ElementRef) {
